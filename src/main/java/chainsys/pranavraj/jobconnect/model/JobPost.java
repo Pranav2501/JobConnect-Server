@@ -1,11 +1,31 @@
 package chainsys.pranavraj.jobconnect.model;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "jobposts")
 public class JobPost {
+
     private String jobId;
+
+    @NotEmpty(message = "Job title is required")
+    @Size(min = 3, max = 100, message = "Job title must be between 3 and 100 characters")
     private String jobTitle;
+
+    @NotEmpty(message = "Job description is required")
+    @Size(min = 10, max = 1000, message = "Job description must be between 10 and 1000 characters")
     private String jobDescription;
+
+    @NotEmpty(message = "Salary is required")
     private String salary;
+
+    @NotEmpty(message = "Employer ID is required")
     private String employerId;
+
+    @NotEmpty(message = "Application deadline is required")
     private String applicationDeadline;
 
     // Getters and Setters
